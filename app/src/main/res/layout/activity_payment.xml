@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20sp"
+    android:orientation="vertical"
+    tools:context=".PaymentActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="20sp"
+        android:layout_gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/cardLL"
+        android:layout_width="match_parent"
+        android:layout_height="350sp"
+        android:layout_marginTop="16sp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16sp"
+            android:layout_marginBottom="8sp">
+
+            <ImageView
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:src="@drawable/card"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Card Details"
+                android:textStyle="bold"
+                android:layout_gravity="bottom"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginLeft="8sp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cardholder's Name"
+            android:textStyle="bold"
+            android:layout_gravity="bottom"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginTop="16sp"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/cardholderNameTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8sp"
+            android:textSize="14sp"
+            android:hint="First Last"
+            android:inputType="text"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Card Number"
+            android:textStyle="bold"
+            android:layout_gravity="bottom"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginTop="16sp"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/cardNumberTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8sp"
+            android:textSize="14sp"
+            android:hint="XXXX-XXXX-XXXX-XXXX"
+            android:inputType="number"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Expiry"
+                    android:textStyle="bold"
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="16sp"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/mmddTextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8sp"
+                    android:textSize="14sp"
+                    android:hint="MM/YY"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CVC"
+                    android:textStyle="bold"
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="16sp"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/cvvTextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8sp"
+                    android:textSize="14sp"
+                    android:hint="XXX"
+                    android:inputType="number"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/confirmBookingButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180sp"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:text="Confirm Booking"
+        android:background="@drawable/rounded_button_background"
+        android:textStyle="bold"
+        android:elevation="10dp"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

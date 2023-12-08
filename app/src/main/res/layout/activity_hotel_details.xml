@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HotelDetailsActivity">
+
+    <ImageView
+        android:id="@+id/hotelImage"
+        android:layout_width="0dp"
+        android:layout_height="200sp"
+        android:src="@drawable/hotel_image"
+        android:background="@drawable/rounded_image"
+        android:layout_marginTop="20sp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.9"/>
+
+    <TextView
+        android:id="@+id/hotelName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Hotel Dang"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="20sp"
+        app:layout_constraintStart_toStartOf="@id/hotelImage"
+        app:layout_constraintEnd_toEndOf="@id/hotelImage"
+        app:layout_constraintTop_toBottomOf="@id/hotelImage"/>
+
+    <TextView
+        android:id="@+id/hotelLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Havana Beach"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/hotelName"
+        app:layout_constraintStart_toStartOf="@id/hotelName"/>
+
+    <ImageView
+        android:id="@+id/starIcon"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:src="@drawable/star"
+        app:layout_constraintBottom_toBottomOf="@id/hotelLocation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toEndOf="@id/hotelLocation"
+        app:layout_constraintTop_toTopOf="@id/hotelLocation"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/starCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/starIcon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toEndOf="@id/starIcon"
+        app:layout_constraintTop_toTopOf="@id/starIcon" />
+
+    <ImageView
+        android:id="@+id/dinnerIcon"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:src="@drawable/dinner"
+        android:layout_marginTop="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/hotelLocation"/>
+
+    <TextView
+        android:id="@+id/dinnerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dinner"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/dinnerIcon"
+        app:layout_constraintEnd_toEndOf="@id/dinnerIcon"
+        app:layout_constraintTop_toBottomOf="@id/dinnerIcon"/>
+
+    <ImageView
+        android:id="@+id/bedIcon"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:src="@drawable/bed"
+        android:layout_marginEnd="90sp"
+        app:layout_constraintTop_toTopOf="@id/dinnerIcon"
+        app:layout_constraintBottom_toBottomOf="@id/dinnerIcon"
+        app:layout_constraintEnd_toStartOf="@id/dinnerIcon" />
+
+    <TextView
+        android:id="@+id/bedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bed"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/bedIcon"
+        app:layout_constraintEnd_toEndOf="@id/bedIcon"
+        app:layout_constraintTop_toBottomOf="@id/bedIcon"/>
+
+
+    <ImageView
+        android:id="@+id/acIcon"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:src="@drawable/ac"
+        android:layout_marginStart="90sp"
+        app:layout_constraintTop_toTopOf="@id/dinnerIcon"
+        app:layout_constraintBottom_toBottomOf="@id/dinnerIcon"
+        app:layout_constraintTop_toBottomOf="@id/hotelLocation"
+        app:layout_constraintStart_toEndOf="@id/dinnerIcon"/>
+
+    <TextView
+        android:id="@+id/acLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AC"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/acIcon"
+        app:layout_constraintEnd_toEndOf="@id/acIcon"
+        app:layout_constraintTop_toBottomOf="@id/acIcon"/>
+
+    <TextView
+        android:id="@+id/descriptionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        android:textColor="@color/black"
+        android:layout_marginTop="20sp"
+        app:layout_constraintTop_toBottomOf="@id/dinnerLabel"
+        app:layout_constraintStart_toStartOf="@id/hotelName"/>
+
+    <TextView
+        android:id="@+id/hotelDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Presenting a very beautiful view from the beach, will make you feel relaxed to stay here"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10sp"
+        app:layout_constraintTop_toBottomOf="@id/descriptionLabel"/>
+
+    <TextView
+        android:id="@+id/galleryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gallery"
+        android:textSize="18sp"
+        android:textStyle="normal"
+        android:textColor="@color/black"
+        android:layout_marginTop="20sp"
+        app:layout_constraintTop_toBottomOf="@id/hotelDescription"
+        app:layout_constraintStart_toStartOf="@id/hotelName"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHotelImages"
+        android:layout_width="0dp"
+        android:layout_height="80sp"
+        android:layout_marginTop="10sp"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintTop_toBottomOf="@id/galleryLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/priceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textSize="20sp"
+        android:layout_marginBottom="10sp"
+        app:layout_constraintStart_toStartOf="@id/hotelName"
+        app:layout_constraintBottom_toTopOf="@id/price"/>
+    
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$130/Night"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginBottom="20sp"
+        app:layout_constraintStart_toStartOf="@id/hotelName"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bookButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Book"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginStart="40sp"
+        android:layout_marginEnd="20sp"
+        android:background="@drawable/rounded_button_background"
+        app:layout_constraintTop_toTopOf="@id/priceLabel"
+        app:layout_constraintBottom_toBottomOf="@id/price"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:elevation="10dp"
+        app:layout_constraintStart_toEndOf="@id/price"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
