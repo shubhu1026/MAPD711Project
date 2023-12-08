@@ -13,23 +13,6 @@ interface HotelDao {
 
     @Insert
     suspend fun insertHotels(hotels: List<Hotel>)
-
-    //read users
     @Query("SELECT * FROM hotels")
     suspend fun getAllHotels(): List<Hotel>
-
-    @Query("SELECT * FROM hotels WHERE hotelName = :hotelName")
-    suspend fun getHotelByName(hotelName: String): Hotel?
-
-    //update user
-    @Update
-    suspend fun updateHotel(hotel: Hotel)
-
-    //delete user
-    @Delete
-    suspend fun deleteHotel(hotel: Hotel)
-
-    //deleteAll
-    @Query("DELETE FROM hotels")
-    suspend fun deleteAllHotels()
 }

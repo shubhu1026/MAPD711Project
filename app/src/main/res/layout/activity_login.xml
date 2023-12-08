@@ -33,6 +33,7 @@
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -47,6 +48,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/loginTitle" />
 
@@ -56,6 +58,7 @@
                 android:layout_height="43sp"
                 android:layout_marginEnd="20sp"
                 android:hint="Enter Email"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/emailLabel"
                 app:layout_constraintTop_toBottomOf="@id/emailLabel" />
@@ -69,6 +72,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
                 app:layout_constraintStart_toStartOf="@id/emailLabel"
                 app:layout_constraintTop_toBottomOf="@id/emailInput" />
 
@@ -79,6 +83,7 @@
                 android:layout_marginEnd="20sp"
                 android:layout_marginBottom="50sp"
                 android:hint="Enter Password"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/passwordLabel"
@@ -95,6 +100,7 @@
         android:text="Login"
         android:textSize="20sp"
         android:textColor="@color/white"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         android:layout_marginStart="20sp"
         android:layout_marginEnd="20sp"
         android:layout_marginTop="20sp"
@@ -118,6 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Don't have an account?"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
             android:textSize="18sp"
             android:textColor="@color/black"/>
 
@@ -126,10 +133,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sign Up"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
             android:layout_marginLeft="10sp"
             android:textSize="18sp"
             android:textColor="#007bff"/>
     </LinearLayout>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

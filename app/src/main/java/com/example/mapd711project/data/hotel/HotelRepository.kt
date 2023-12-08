@@ -1,6 +1,9 @@
 package com.example.mapd711project.data.hotel
 
-class HotelRepository(private val hotelDao: HotelDao) {
+import com.example.mapd711project.data.previewImage.PreviewImage
+import com.example.mapd711project.data.previewImage.PreviewImageDao
+
+class HotelRepository(private val hotelDao: HotelDao, private val previewImageDao: PreviewImageDao) {
     suspend fun insertHotel(hotel: Hotel){
         hotelDao.insertHotel(hotel)
     }
@@ -13,25 +16,12 @@ class HotelRepository(private val hotelDao: HotelDao) {
         return hotelDao.getAllHotels()
     }
 
-    suspend fun getHotelByName(hotelName: String): Hotel?{
-        return hotelDao.getHotelByName(hotelName)
+    suspend fun insertPreviewImages(previewImages: List<PreviewImage>) {
+        previewImageDao.insertPreviewImages(previewImages)
     }
 
-    suspend fun getHotelIdFromHotelName(hotelName: String): Int? {
-        val hotel = hotelDao.getHotelByName(hotelName)
-        return hotel?.productId
-    }
-
-    suspend fun updateHotel(hotel: Hotel) {
-        hotelDao.updateHotel(hotel)
-    }
-
-    suspend fun deleteHotel(hotel: Hotel) {
-        hotelDao.deleteHotel(hotel)
-    }
-
-    suspend fun deleteAllHotels() {
-        hotelDao.deleteAllHotels()
+    suspend fun getPreviewImagesByHotelId(hotelId: Int): List<PreviewImage> {
+        return previewImageDao.getPreviewImagesByHotelId(hotelId)
     }
 }
 

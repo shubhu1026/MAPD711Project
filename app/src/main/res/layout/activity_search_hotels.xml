@@ -14,6 +14,7 @@
         android:text="Welcome Buddy"
         android:textColor="#4694ea"
         android:textStyle="bold"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="20sp"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:textColor="#69acec"
         android:text="Find your dream Hotel"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
         app:layout_constraintTop_toBottomOf="@id/welcomeLabel"
         app:layout_constraintStart_toStartOf="@id/welcomeLabel"/>
 
@@ -43,6 +45,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Search Hotel"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
         android:layout_marginTop="30sp"
         android:layout_marginEnd="20sp"
         app:layout_constraintTop_toBottomOf="@id/findHotelLabel"

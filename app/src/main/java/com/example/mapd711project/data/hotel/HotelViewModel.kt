@@ -6,40 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mapd711project.data.hotel.Hotel
 import com.example.mapd711project.data.hotel.HotelRepository
+import com.example.mapd711project.data.previewImage.PreviewImage
 import kotlinx.coroutines.launch
 
 class HotelViewModel(private val hotelRepository: HotelRepository): ViewModel() {
-    private val _hotels = MutableLiveData<List<Hotel>>()
-    private val _fetchedHotel = MutableLiveData<Hotel?>()
 
-    val fetchedHotel: LiveData<Hotel?>
-        get() = _fetchedHotel
-    val hotels: LiveData<List<Hotel>>
-        get() = _hotels
-
-    fun getHotels() {
-        viewModelScope.launch {
-            val result = hotelRepository.getAllHotels()
-            _hotels.value = result
-        }
-    }
-
-    fun getHotelByName(hotelName: String){
-        viewModelScope.launch {
-            val result = hotelRepository.getHotelByName(hotelName)
-            _fetchedHotel.value = result
-        }
-    }
-
-    suspend fun getHotelIdFromHotelName(hotelName: String): Int? {
-        return hotelRepository.getHotelIdFromHotelName(hotelName)
-    }
-
-    fun insertHotel(hotel: Hotel) {
-        viewModelScope.launch {
-            hotelRepository.insertHotel(hotel)
-        }
-    }
+    private val _hotelsLiveData = MutableLiveData<List<Hotel>>()
+    val hotelsLiveData: LiveData<List<Hotel>>
+        get() = _hotelsLiveData
 
     fun insertHotels(hotels: List<Hotel>){
         viewModelScope.launch {
@@ -47,21 +21,18 @@ class HotelViewModel(private val hotelRepository: HotelRepository): ViewModel() 
         }
     }
 
-    fun updateHotel(hotel: Hotel) {
+    fun getAllHotels() {
         viewModelScope.launch {
-            hotelRepository.updateHotel(hotel)
+            val hotels = hotelRepository.getAllHotels()
+            _hotelsLiveData.postValue(hotels)
         }
     }
 
-    fun deleteHotel(hotel: Hotel) {
-        viewModelScope.launch {
-            hotelRepository.deleteHotel(hotel)
-        }
+    suspend fun insertPreviewImages(previewImages: List<PreviewImage>) {
+        hotelRepository.insertPreviewImages(previewImages)
     }
 
-    fun deleteAllHotels() {
-        viewModelScope.launch {
-            hotelRepository.deleteAllHotels()
-        }
+    suspend fun getPreviewImagesByHotelId(hotelId: Int): List<PreviewImage> {
+        return hotelRepository.getPreviewImagesByHotelId(hotelId)
     }
 }

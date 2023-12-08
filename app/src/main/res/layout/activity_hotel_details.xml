@@ -7,17 +7,48 @@
     tools:context=".HotelDetailsActivity">
 
     <ImageView
-        android:id="@+id/hotelImage"
-        android:layout_width="0dp"
-        android:layout_height="200sp"
-        android:src="@drawable/hotel_image"
-        android:background="@drawable/rounded_image"
+        android:id="@+id/backButton"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:src="@drawable/back"
         android:layout_marginTop="20sp"
-        android:scaleType="centerCrop"
+        android:padding="2sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/hotelImageCard"/>
+
+    <TextView
+        android:id="@+id/hotelNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Details"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="#101010"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.9"/>
+        app:layout_constraintTop_toTopOf="@id/backButton"
+        app:layout_constraintBottom_toBottomOf="@id/backButton" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hotelImageCard"
+        android:layout_width="0dp"
+        android:layout_height="300sp"
+        android:layout_marginTop="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton"
+        app:layout_constraintWidth_percent="0.9"
+        app:cardCornerRadius="10sp">
+
+    <ImageView
+        android:id="@+id/hotelImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/hotel_image"
+        android:background="@drawable/rounded_image"
+        android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/hotelName"
@@ -26,11 +57,12 @@
         android:text="Hotel Dang"
         android:textStyle="bold"
         android:textSize="25sp"
-        android:textColor="@color/black"
+        android:textColor="#101010"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         android:layout_marginTop="20sp"
-        app:layout_constraintStart_toStartOf="@id/hotelImage"
-        app:layout_constraintEnd_toEndOf="@id/hotelImage"
-        app:layout_constraintTop_toBottomOf="@id/hotelImage"/>
+        app:layout_constraintStart_toStartOf="@id/hotelImageCard"
+        app:layout_constraintEnd_toEndOf="@id/hotelImageCard"
+        app:layout_constraintTop_toBottomOf="@id/hotelImageCard"/>
 
     <TextView
         android:id="@+id/hotelLocation"
@@ -38,6 +70,8 @@
         android:layout_height="wrap_content"
         android:text="Havana Beach"
         android:textSize="18sp"
+        android:textColor="#878787"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
         app:layout_constraintTop_toBottomOf="@id/hotelName"
         app:layout_constraintStart_toStartOf="@id/hotelName"/>
 
@@ -46,30 +80,28 @@
         android:layout_width="30sp"
         android:layout_height="30sp"
         android:src="@drawable/star"
-        app:layout_constraintBottom_toBottomOf="@id/hotelLocation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toEndOf="@id/hotelLocation"
-        app:layout_constraintTop_toTopOf="@id/hotelLocation"
+        android:layout_marginRight="5sp"
+        app:layout_constraintBottom_toBottomOf="@id/hotelName"
+        app:layout_constraintEnd_toStartOf="@id/starCount"
+        app:layout_constraintTop_toTopOf="@id/hotelName"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/starCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="4"
+        android:text="4.0"
         android:textColor="@color/black"
         android:textSize="18sp"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
         app:layout_constraintBottom_toBottomOf="@id/starIcon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toEndOf="@id/starIcon"
+        app:layout_constraintEnd_toEndOf="@id/hotelImageCard"
         app:layout_constraintTop_toTopOf="@id/starIcon" />
 
     <ImageView
         android:id="@+id/dinnerIcon"
-        android:layout_width="40sp"
-        android:layout_height="40sp"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
         android:src="@drawable/dinner"
         android:layout_marginTop="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,14 +114,15 @@
         android:layout_height="wrap_content"
         android:text="Dinner"
         android:textSize="18sp"
+        android:fontFamily="@font/plus_jakarta_sans_regular"
         app:layout_constraintStart_toStartOf="@id/dinnerIcon"
         app:layout_constraintEnd_toEndOf="@id/dinnerIcon"
         app:layout_constraintTop_toBottomOf="@id/dinnerIcon"/>
 
     <ImageView
         android:id="@+id/bedIcon"
-        android:layout_width="40sp"
-        android:layout_height="40sp"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
         android:src="@drawable/bed"
         android:layout_marginEnd="90sp"
         app:layout_constraintTop_toTopOf="@id/dinnerIcon"
@@ -102,6 +135,7 @@
         android:layout_height="wrap_content"
         android:text="Bed"
         android:textSize="18sp"
+        android:fontFamily="@font/plus_jakarta_sans_regular"
         app:layout_constraintStart_toStartOf="@id/bedIcon"
         app:layout_constraintEnd_toEndOf="@id/bedIcon"
         app:layout_constraintTop_toBottomOf="@id/bedIcon"/>
@@ -109,8 +143,8 @@
 
     <ImageView
         android:id="@+id/acIcon"
-        android:layout_width="40sp"
-        android:layout_height="40sp"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
         android:src="@drawable/ac"
         android:layout_marginStart="90sp"
         app:layout_constraintTop_toTopOf="@id/dinnerIcon"
@@ -124,6 +158,7 @@
         android:layout_height="wrap_content"
         android:text="AC"
         android:textSize="18sp"
+        android:fontFamily="@font/plus_jakarta_sans_regular"
         app:layout_constraintStart_toStartOf="@id/acIcon"
         app:layout_constraintEnd_toEndOf="@id/acIcon"
         app:layout_constraintTop_toBottomOf="@id/acIcon"/>
@@ -135,7 +170,8 @@
         android:text="Description"
         android:textSize="18sp"
         android:textStyle="normal"
-        android:textColor="@color/black"
+        android:textColor="#101010"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         android:layout_marginTop="20sp"
         app:layout_constraintTop_toBottomOf="@id/dinnerLabel"
         app:layout_constraintStart_toStartOf="@id/hotelName"/>
@@ -145,6 +181,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Presenting a very beautiful view from the beach, will make you feel relaxed to stay here"
+        android:textColor="#878787"
+        android:fontFamily="@font/plus_jakarta_sans_regular"
         app:layout_constraintWidth_percent="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -158,7 +196,8 @@
         android:text="Gallery"
         android:textSize="18sp"
         android:textStyle="normal"
-        android:textColor="@color/black"
+        android:textColor="#101010"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         android:layout_marginTop="20sp"
         app:layout_constraintTop_toBottomOf="@id/hotelDescription"
         app:layout_constraintStart_toStartOf="@id/hotelName"/>
@@ -179,20 +218,42 @@
         android:layout_height="wrap_content"
         android:text="Price"
         android:textSize="20sp"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
         android:layout_marginBottom="10sp"
         app:layout_constraintStart_toStartOf="@id/hotelName"
-        app:layout_constraintBottom_toTopOf="@id/price"/>
-    
-    <TextView
-        android:id="@+id/price"
+        app:layout_constraintBottom_toTopOf="@id/priceLL"/>
+
+    <LinearLayout
+        android:id="@+id/priceLL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$130/Night"
-        android:textStyle="bold"
-        android:textSize="20sp"
         android:layout_marginBottom="20sp"
         app:layout_constraintStart_toStartOf="@id/hotelName"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$130"
+            android:textColor="#4C4DDC"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/night"
+            android:textColor="#878787"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="@font/plus_jakarta_sans_bold" />
+
+    </LinearLayout>
+
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bookButton"
@@ -201,12 +262,12 @@
         android:text="Book"
         android:textSize="20sp"
         android:textColor="@color/white"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         android:layout_marginStart="40sp"
-        android:layout_marginEnd="20sp"
         android:background="@drawable/rounded_button_background"
         app:layout_constraintTop_toTopOf="@id/priceLabel"
-        app:layout_constraintBottom_toBottomOf="@id/price"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/priceLL"
+        app:layout_constraintEnd_toEndOf="@id/hotelImageCard"
         android:elevation="10dp"
-        app:layout_constraintStart_toEndOf="@id/price"/>
+        app:layout_constraintStart_toEndOf="@id/priceLL"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

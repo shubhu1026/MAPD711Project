@@ -7,12 +7,18 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mapd711project.Hotel
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.mapd711project.HotelDetailsActivity
 import com.example.mapd711project.R
+import com.example.mapd711project.data.hotel.Hotel
 
-class NearestHotelsAdapter(private val hotelList: List<Hotel>) : RecyclerView.Adapter<NearestHotelsAdapter.ViewHolder>() {
-
+class NearestHotelsAdapter(private var hotelList: List<Hotel>) : RecyclerView.Adapter<NearestHotelsAdapter.ViewHolder>() {
+    fun updateHotelList(newHotelList: List<Hotel>) {
+        hotelList = newHotelList
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_nearest_hotels, parent, false)
         return ViewHolder(view)
@@ -31,21 +37,29 @@ class NearestHotelsAdapter(private val hotelList: List<Hotel>) : RecyclerView.Ad
         private val hotelImage: ImageView = itemView.findViewById(R.id.hotelImage)
         private val hotelName: TextView = itemView.findViewById(R.id.hotelName)
         private val hotelAddress: TextView = itemView.findViewById(R.id.hotelAddress)
+        private val context = itemView.context
 
         init {
             itemView.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val intent = Intent(itemView.context, HotelDetailsActivity::class.java)
-                    intent.putExtra("hotel_Name", hotelList[position].name)
+                    intent.putExtra("hotelId", hotelList[position].hotelId)
                     itemView.context.startActivity(intent)
                 }
             }
         }
 
         fun bind(hotel: Hotel) {
-            hotelImage.setImageResource(hotel.imageResource) // Use hotel image resource here
-            hotelName.text = hotel.name // Use hotel name here
+            val requestOptions = RequestOptions()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.hotel_image) // Placeholder if image loading fails
+
+            Glide.with(context)
+                .load(hotel.displayImage) // Loading image from assets
+                .apply(requestOptions)
+                .into(hotelImage)// Use hotel image resource here
+            hotelName.text = hotel.hotelName // Use hotel name here
             hotelAddress.text = hotel.location
         }
     }

@@ -23,5 +23,9 @@ class HotelDetailsActivity : AppCompatActivity() {
         binding.bookButton.setOnClickListener {
             startActivity(Intent(this, BookingDetailsActivity::class.java))
         }
+
+        binding.backButton.setOnClickListener {
+            onBackPressed()
+        }
     }
 }

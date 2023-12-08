@@ -28,11 +28,11 @@
                 android:elevation="15dp">
 
             <ImageView
-            android:id="@+id/hotelImage"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/hotel_image_1" />
+                android:id="@+id/hotelImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/hotel_image_1" />
             </androidx.cardview.widget.CardView>
 
         <TextView
