@@ -13,7 +13,7 @@ class PaymentActivity : AppCompatActivity() {
         binding = ActivityPaymentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.confirmBookingButton.setOnClickListener {
+        binding.payButton.setOnClickListener {
             startActivity(Intent(this, ThanksActivity::class.java))
         }
     }

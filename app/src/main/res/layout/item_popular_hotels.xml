@@ -47,24 +47,23 @@
             android:layout_width="25sp"
             android:layout_height="25sp"
             android:src="@drawable/star"
+            android:layout_marginRight="5sp"
             app:layout_constraintBottom_toBottomOf="@id/hotelName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.65"
-            app:layout_constraintStart_toEndOf="@id/hotelName"
+            app:layout_constraintEnd_toStartOf="@id/starCount"
             app:layout_constraintTop_toTopOf="@id/hotelName"/>
 
         <TextView
+            android:id="@+id/starCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="4.0"
             android:textSize="18sp"
             android:fontFamily="@font/plus_jakarta_sans_bold"
             android:textColor="#101010"
-            android:layout_marginLeft="5sp"
-            app:layout_constraintBottom_toBottomOf="@id/starIcon"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toEndOf="@id/starIcon"
-            app:layout_constraintTop_toTopOf="@id/starIcon"/>
+            android:layout_marginRight="2sp"
+            app:layout_constraintBottom_toBottomOf="@id/hotelName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/hotelName"/>
 
         <TextView
                 android:id="@+id/hotelAddress"

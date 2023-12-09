@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MAPD711 Project</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

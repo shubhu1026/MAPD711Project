@@ -15,6 +15,10 @@ class HotelViewModel(private val hotelRepository: HotelRepository): ViewModel() 
     val hotelsLiveData: LiveData<List<Hotel>>
         get() = _hotelsLiveData
 
+    private val _hotelLiveData = MutableLiveData<Hotel>()
+    val hotelLiveData: LiveData<Hotel>
+        get() = _hotelLiveData
+
     fun insertHotels(hotels: List<Hotel>){
         viewModelScope.launch {
             hotelRepository.insertHotels(hotels)
@@ -25,6 +29,13 @@ class HotelViewModel(private val hotelRepository: HotelRepository): ViewModel() 
         viewModelScope.launch {
             val hotels = hotelRepository.getAllHotels()
             _hotelsLiveData.postValue(hotels)
+        }
+    }
+
+    fun getHotelWithId(hotelId: Int){
+        viewModelScope.launch {
+            val hotel = hotelRepository.getHotelById(hotelId)
+            _hotelLiveData.value = hotel
         }
     }
 

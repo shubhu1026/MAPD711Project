@@ -57,9 +57,9 @@
                 android:textSize="18sp"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
                 android:textColor="#101010"
-                app:layout_constraintStart_toEndOf="@id/hotelName"
-                app:layout_constraintTop_toTopOf="@id/hotelName"
-                app:layout_constraintBottom_toBottomOf="@id/hotelName"
+                android:layout_marginRight="5sp"
+                app:layout_constraintTop_toTopOf="@id/starCount"
+                app:layout_constraintBottom_toBottomOf="@id/starCount"
                 app:layout_constraintEnd_toEndOf="parent"
                 />
         <TextView
@@ -84,6 +84,7 @@
                 app:layout_constraintStart_toStartOf="@id/hotelAddress"/>
 
             <TextView
+                android:id="@+id/starCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4.0"

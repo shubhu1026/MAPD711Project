@@ -1,167 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#ffffff"
     android:layout_height="match_parent"
-    android:padding="20sp"
-    android:orientation="vertical"
     tools:context=".PaymentActivity">
 
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:src="@drawable/back"
+        android:layout_marginTop="20sp"
+        android:padding="2sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/cardView"/>
+
     <TextView
+        android:id="@+id/pageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Payment"
-        android:textSize="30sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textColor="#101010"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/backButton"
+        app:layout_constraintBottom_toBottomOf="@id/backButton" />
+
+    <ImageView
+        android:id="@+id/creditCardImage"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:src="@drawable/credit_card"
         android:layout_marginTop="20sp"
-        android:layout_gravity="center" />
+        app:layout_constraintTop_toBottomOf="@id/pageTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/cardLL"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/creditCardImage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintVertical_bias="0.2"
+        app:cardCornerRadius="20sp"
+        app:cardElevation="40dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="350sp"
-        android:layout_marginTop="16sp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16sp"
-            android:layout_marginBottom="8sp">
-
-            <ImageView
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:src="@drawable/card"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Card Details"
-                android:textStyle="bold"
-                android:layout_gravity="bottom"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:layout_marginLeft="8sp"/>
-        </LinearLayout>
+        android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/cardDetailsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cardholder's Name"
-            android:textStyle="bold"
-            android:layout_gravity="bottom"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginTop="16sp"/>
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/cardholderNameTextInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8sp"
-            android:textSize="14sp"
-            android:hint="First Last"
-            android:inputType="text"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_marginTop="50sp"
+            android:text="Card Details"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:textColor="#101010"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/cardNumberLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_marginTop="50sp"
             android:text="Card Number"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:textColor="#101010"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_gravity="bottom"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginTop="16sp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardDetailsTitle" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/cardNumberTextInput"
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/cardNumberInput"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8sp"
-            android:textSize="14sp"
             android:hint="XXXX-XXXX-XXXX-XXXX"
-            android:inputType="number"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:textColor="#878787"
+            android:textColorHint="#878787"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="50sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cardNumberLabel"
+            app:layout_constraintTop_toBottomOf="@id/cardNumberLabel"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/cardExpiryLabel"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginLeft="20sp"
+            android:layout_marginTop="20sp"
+            android:text="Expiry Date"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:textColor="#101010"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardNumberInput" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+        <EditText
+            android:id="@+id/cardExpiryInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="MMYY"
+            android:textColor="#878787"
+            android:textColorHint="#878787"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:layout_marginBottom="50sp"
+            app:layout_constraintEnd_toEndOf="@id/cardExpiryLabel"
+            app:layout_constraintStart_toStartOf="@id/cardExpiryLabel"
+            app:layout_constraintTop_toBottomOf="@id/cardExpiryLabel"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Expiry"
-                    android:textStyle="bold"
-                    android:layout_gravity="bottom"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginTop="16sp"/>
+        <TextView
+            android:id="@+id/cvvLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Secure Code"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:textColor="#101010"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="40sp"
+            app:layout_constraintStart_toEndOf="@id/cardExpiryLabel"
+            app:layout_constraintTop_toTopOf="@id/cardExpiryLabel"
+            app:layout_constraintBottom_toBottomOf="@id/cardExpiryLabel"/>
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/mmddTextInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8sp"
-                    android:textSize="14sp"
-                    android:hint="MM/YY"
-                    tools:ignore="TouchTargetSizeCheck" />
+        <EditText
+            android:id="@+id/cvvInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="CVV"
+            android:textColor="#878787"
+            android:textColorHint="#878787"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:layout_marginBottom="50sp"
+            app:layout_constraintEnd_toEndOf="@id/cvvLabel"
+            app:layout_constraintStart_toStartOf="@id/cvvLabel"
+            app:layout_constraintTop_toBottomOf="@id/cvvLabel"/>
 
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
+        <TextView
+            android:id="@+id/nameOnCardLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_marginTop="20sp"
+            android:text="Name on Card"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:textColor="#101010"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardExpiryInput" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CVC"
-                    android:textStyle="bold"
-                    android:layout_gravity="bottom"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginTop="16sp"/>
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/cvvTextInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8sp"
-                    android:textSize="14sp"
-                    android:hint="XXX"
-                    android:inputType="number"
-                    tools:ignore="TouchTargetSizeCheck" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
-
+        <EditText
+            android:id="@+id/nameOnCardInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="First Last"
+            android:textColor="#878787"
+            android:textColorHint="#878787"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:layout_marginEnd="20sp"
+            android:layout_marginBottom="50sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/nameOnCardLabel"
+            app:layout_constraintTop_toBottomOf="@id/nameOnCardLabel"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/confirmBookingButton"
-        android:layout_width="match_parent"
+        android:id="@+id/payButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="180sp"
+        android:text="Pay"
         android:textSize="20sp"
         android:textColor="@color/white"
-        android:text="Confirm Booking"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:layout_marginTop="20sp"
         android:background="@drawable/rounded_button_background"
-        android:textStyle="bold"
-        android:elevation="10dp"
-        android:layout_gravity="center"/>
+        android:elevation="20sp"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.9"/>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

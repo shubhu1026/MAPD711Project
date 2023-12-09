@@ -16,6 +16,10 @@ class HotelRepository(private val hotelDao: HotelDao, private val previewImageDa
         return hotelDao.getAllHotels()
     }
 
+    suspend fun getHotelById(hotelId: Int): Hotel {
+        return hotelDao.getHotelById(hotelId)
+    }
+
     suspend fun insertPreviewImages(previewImages: List<PreviewImage>) {
         previewImageDao.insertPreviewImages(previewImages)
     }

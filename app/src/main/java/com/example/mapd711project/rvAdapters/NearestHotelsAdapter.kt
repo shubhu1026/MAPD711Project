@@ -37,6 +37,8 @@ class NearestHotelsAdapter(private var hotelList: List<Hotel>) : RecyclerView.Ad
         private val hotelImage: ImageView = itemView.findViewById(R.id.hotelImage)
         private val hotelName: TextView = itemView.findViewById(R.id.hotelName)
         private val hotelAddress: TextView = itemView.findViewById(R.id.hotelAddress)
+        private val hotelRating: TextView = itemView.findViewById(R.id.starCount)
+        private val hotelPrice: TextView = itemView.findViewById(R.id.hotelPrice)
         private val context = itemView.context
 
         init {
@@ -61,6 +63,8 @@ class NearestHotelsAdapter(private var hotelList: List<Hotel>) : RecyclerView.Ad
                 .into(hotelImage)// Use hotel image resource here
             hotelName.text = hotel.hotelName // Use hotel name here
             hotelAddress.text = hotel.location
+            hotelRating.text = hotel.rating
+            hotelPrice.text = "$${hotel.price}/night"
         }
     }
 }
