@@ -39,8 +39,7 @@ class BookingDetailsActivity : AppCompatActivity() {
             } else if (!isRoomCountValid()) {
                 Toast.makeText(this, "Please enter a valid room count.", Toast.LENGTH_SHORT).show()
             } else {
-                // If all conditions are met, proceed to the next activity (PaymentActivity)
-                startActivity(Intent(this, PaymentActivity::class.java))
+                startActivity(Intent(this, BookingSummaryActivity::class.java))
             }
         }
 

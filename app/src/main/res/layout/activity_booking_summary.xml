@@ -107,7 +107,6 @@
                 android:layout_marginTop="5sp"
                 android:fontFamily="@font/plus_jakarta_sans_bold"
                 app:layout_constraintStart_toStartOf="@id/starIcon"
-                app:layout_constraintEnd_toStartOf=""
                 app:layout_constraintTop_toBottomOf="@id/starIcon" />
 
             <androidx.cardview.widget.CardView
@@ -207,7 +206,7 @@
                 android:id="@+id/roomsLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Room"
+                android:text="Rooms"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:textColor="#101010"

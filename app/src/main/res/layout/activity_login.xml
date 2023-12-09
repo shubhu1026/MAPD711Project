@@ -17,6 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintWidth_percent="0.9"
         app:layout_constraintVertical_bias="0.4"
+        android:background="@drawable/gradient_background"
         app:cardCornerRadius="20sp"
         app:cardElevation="40dp">
 
@@ -39,7 +40,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/nameLabel"
+                android:id="@+id/emailLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20sp"
@@ -53,7 +54,7 @@
                 app:layout_constraintTop_toBottomOf="@id/loginTitle" />
 
             <EditText
-                android:id="@+id/nameInput"
+                android:id="@+id/emailInput"
                 android:layout_width="0dp"
                 android:layout_height="43sp"
                 android:layout_marginEnd="20sp"
@@ -61,11 +62,11 @@
                 android:textColor="#878787"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/nameLabel"
-                app:layout_constraintTop_toBottomOf="@id/nameLabel" />
+                app:layout_constraintStart_toStartOf="@id/emailLabel"
+                app:layout_constraintTop_toBottomOf="@id/emailLabel" />
 
             <TextView
-                android:id="@+id/phoneNoLabel"
+                android:id="@+id/passwordLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20sp"
@@ -74,8 +75,8 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/plus_jakarta_sans_bold"
-                app:layout_constraintStart_toStartOf="@id/nameLabel"
-                app:layout_constraintTop_toBottomOf="@id/nameInput" />
+                app:layout_constraintStart_toStartOf="@id/emailLabel"
+                app:layout_constraintTop_toBottomOf="@id/emailInput" />
 
             <EditText
                 android:id="@+id/passwordInput"
@@ -88,8 +89,8 @@
                 android:fontFamily="@font/plus_jakarta_sans_medium"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/phoneNoLabel"
-                app:layout_constraintTop_toBottomOf="@id/phoneNoLabel" />
+                app:layout_constraintStart_toStartOf="@id/passwordLabel"
+                app:layout_constraintTop_toBottomOf="@id/passwordLabel" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -49,6 +49,7 @@
         android:layout_marginTop="10sp"
         android:background="@drawable/rounded_button_background"
         android:elevation="10dp"
+        android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/comfortLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
