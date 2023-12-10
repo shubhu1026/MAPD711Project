@@ -1,9 +1,12 @@
 package com.example.mapd711project
 
 import android.R
+import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
@@ -66,44 +69,4 @@ class SearchHotelsActivity : AppCompatActivity() {
 
         hotelViewModel.getAllHotels()
     }
-
-    /*
-    private fun showCustomMenu(anchorView: View) {
-        // Inflate the custom menu layout
-        val popupView: View = LayoutInflater.from(this).inflate(R.layout, null)
-
-        // Create a PopupWindow and set its properties
-        val popupWindow = PopupWindow(
-            popupView,
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
-
-        // Set a transparent background
-        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        // Set focusable to true to receive touch events
-        popupWindow.isFocusable = true
-
-        // Show the popup menu at a specific position relative to the anchor view
-        popupWindow.showAsDropDown(anchorView) // Replace this with showAtLocation() if needed
-
-        // Handle clicks on menu items
-        val menuItem1 = popupView.findViewById<TextView>(R.id.menuItem1)
-        val menuItem2 = popupView.findViewById<TextView>(R.id.menuItem2)
-        menuItem1.setOnClickListener { v: View? ->
-            // Handle click on menuItem1
-            // Example: perform an action or dismiss the popup
-            popupWindow.dismiss()
-        }
-        menuItem2.setOnClickListener { v: View? ->
-            // Handle click on menuItem2
-            // Example: perform an action or dismiss the popup
-            popupWindow.dismiss()
-        }
-
-        // Add click listeners for other menu items similarly
-    }
-g
-     */
 }
