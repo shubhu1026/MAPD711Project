@@ -1,4 +1,4 @@
-package com.example.shubhampatelanmolsharma_mapd711_assignment4.data.pizza
+package com.example.mapd711project.data.hotel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,6 +15,17 @@ class HotelViewModel(private val hotelRepository: HotelRepository): ViewModel() 
     val hotelsLiveData: LiveData<List<Hotel>>
         get() = _hotelsLiveData
 
+    // Popular Hotels
+    private val _popularHotelsLiveData = MutableLiveData<List<Hotel>>()
+    val popularHotelsLiveData: LiveData<List<Hotel>>
+        get() = _popularHotelsLiveData
+
+    // Recommended Hotels
+    private val _recommendedHotelsLiveData = MutableLiveData<List<Hotel>>()
+    val recommendedHotelsLiveData: LiveData<List<Hotel>>
+        get() = _recommendedHotelsLiveData
+
+
     private val _hotelLiveData = MutableLiveData<Hotel>()
     val hotelLiveData: LiveData<Hotel>
         get() = _hotelLiveData
@@ -29,6 +40,20 @@ class HotelViewModel(private val hotelRepository: HotelRepository): ViewModel() 
         viewModelScope.launch {
             val hotels = hotelRepository.getAllHotels()
             _hotelsLiveData.postValue(hotels)
+        }
+    }
+
+    fun getPopularHotels() {
+        viewModelScope.launch {
+            val hotels = hotelRepository.getPopularHotels()
+            _popularHotelsLiveData.postValue(hotels)
+        }
+    }
+
+    fun getRecommendedHotels() {
+        viewModelScope.launch {
+            val hotels = hotelRepository.getRecommendedHotels()
+            _recommendedHotelsLiveData.postValue(hotels)
         }
     }
 

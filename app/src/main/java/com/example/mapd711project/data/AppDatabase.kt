@@ -9,8 +9,8 @@ import com.example.mapd711project.data.admin.Admin
 import com.example.mapd711project.data.admin.AdminDao
 import com.example.mapd711project.data.customer.Customer
 import com.example.mapd711project.data.customer.CustomerDao
-import com.example.mapd711project.data.order.Order
-import com.example.mapd711project.data.order.OrderDao
+import com.example.mapd711project.data.booking.Booking
+import com.example.mapd711project.data.booking.BookingDao
 import com.example.mapd711project.data.hotel.Hotel
 import com.example.mapd711project.data.hotel.HotelDao
 import com.example.mapd711project.data.previewImage.PreviewImage
@@ -19,13 +19,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Admin::class, Customer::class, Hotel::class, Order::class, PreviewImage::class ], version = 1)
+@Database(entities = [Admin::class, Customer::class, Hotel::class, Booking::class, PreviewImage::class ], version = 1)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun adminDao(): AdminDao
     abstract fun customerDao() : CustomerDao
     abstract fun hotelDao(): HotelDao
-    abstract fun orderDao(): OrderDao
+    abstract fun bookingDao(): BookingDao
 
     abstract fun previewImageDao(): PreviewImageDao
 
@@ -71,6 +71,7 @@ abstract class AppDatabase: RoomDatabase() {
                         Hotel(
                             1,
                             hotelName = "Majestic Plaza Hotel",
+                            category = "Popular",
                             price = 180.0,
                             location = "London",
                             address = "12 Park Lane, London",
@@ -81,6 +82,7 @@ abstract class AppDatabase: RoomDatabase() {
                         Hotel(
                             2,
                             hotelName = "Golden Bay Resort",
+                            category = "Popular",
                             price = 220.0,
                             location = "Sydney",
                             address = "34 Bondi Road, Sydney",
@@ -91,6 +93,7 @@ abstract class AppDatabase: RoomDatabase() {
                         Hotel(
                             3,
                             hotelName = "Mountain View Lodge",
+                            category = "Popular",
                             price = 150.0,
                             location = "Aspen",
                             address = "78 Snowy Peaks Rd, Aspen",
@@ -101,6 +104,7 @@ abstract class AppDatabase: RoomDatabase() {
                         Hotel(
                             4,
                             hotelName = "Oceanfront Paradise",
+                            category = "Popular",
                             price = 320.0,
                             location = "Miami",
                             address = "987 Ocean Drive, Miami",
@@ -111,6 +115,7 @@ abstract class AppDatabase: RoomDatabase() {
                         Hotel(
                             5,
                             hotelName = "Riverside Retreat",
+                            category = "Popular",
                             price = 200.0,
                             location = "Paris",
                             address = "23 Rue de la Seine, Paris",
@@ -121,6 +126,7 @@ abstract class AppDatabase: RoomDatabase() {
                         Hotel(
                             6,
                             hotelName = "Highland Haven",
+                            category = "Recommended",
                             price = 180.0,
                             location = "Edinburgh",
                             address = "56 Royal Mile, Edinburgh",
@@ -131,6 +137,7 @@ abstract class AppDatabase: RoomDatabase() {
                         Hotel(
                             7,
                             hotelName = "Tropical Oasis Resort",
+                            category = "Recommended",
                             price = 280.0,
                             location = "Bali",
                             address = "123 Beachfront Ave, Bali",
@@ -141,6 +148,7 @@ abstract class AppDatabase: RoomDatabase() {
                         Hotel(
                             8,
                             hotelName = "Alpine Peaks Hotel",
+                            category = "Recommended",
                             price = 190.0,
                             location = "Zurich",
                             address = "34 Alpine Way, Zurich",
@@ -151,6 +159,7 @@ abstract class AppDatabase: RoomDatabase() {
                         Hotel(
                             9,
                             hotelName = "City Lights Inn",
+                            category = "Recommended",
                             price = 210.0,
                             location = "New York",
                             address = "567 Broadway, New York",
@@ -161,6 +170,7 @@ abstract class AppDatabase: RoomDatabase() {
                         Hotel(
                             10,
                             hotelName = "Sunset Serenity Lodge",
+                            category = "Recommended",
                             price = 170.0,
                             location = "Maldives",
                             address = "78 Serenity Road, Maldives",

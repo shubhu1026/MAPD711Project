@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#ffffff"
     android:layout_height="match_parent"
     tools:context=".PaymentActivity">
 
@@ -21,7 +20,7 @@
         android:id="@+id/pageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Payment"
+        android:text=""
         android:textStyle="bold"
         android:textSize="25sp"
         android:textColor="#101010"
@@ -52,24 +51,36 @@
         app:layout_constraintWidth_percent="0.9"
         app:layout_constraintVertical_bias="0.2"
         app:cardCornerRadius="20sp"
-        app:cardElevation="40dp">
+        app:cardElevation="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/cardDetailsTitle"
+            android:id="@+id/totalLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50sp"
-            android:text="Card Details"
+            android:text="Amount:"
             android:fontFamily="@font/plus_jakarta_sans_bold"
             android:textColor="#101010"
             android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cardNumberLabel"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/totalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$5000"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:textColor="#4C4DDC"
+            android:textSize="30sp"
+            android:layout_marginLeft="5sp"
+            app:layout_constraintStart_toEndOf="@id/totalLabel"
+            app:layout_constraintTop_toTopOf="@id/totalLabel"
+            app:layout_constraintBottom_toBottomOf="@id/totalLabel"/>
 
         <TextView
             android:id="@+id/cardNumberLabel"
@@ -83,7 +94,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardDetailsTitle" />
+            app:layout_constraintTop_toBottomOf="@id/totalLabel" />
 
         <EditText
             android:id="@+id/cardNumberInput"
@@ -92,6 +103,7 @@
             android:hint="XXXX-XXXX-XXXX-XXXX"
             android:textColor="#878787"
             android:textColorHint="#878787"
+            android:inputType="number"
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:layout_marginEnd="20sp"
             android:layout_marginBottom="50sp"
@@ -120,6 +132,8 @@
             android:hint="MMYY"
             android:textColor="#878787"
             android:textColorHint="#878787"
+            android:inputType="number"
+            android:maxLength="4"
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:layout_marginBottom="50sp"
             app:layout_constraintEnd_toEndOf="@id/cardExpiryLabel"
@@ -147,6 +161,8 @@
             android:hint="CVV"
             android:textColor="#878787"
             android:textColorHint="#878787"
+            android:inputType="number"
+            android:maxLength="3"
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:layout_marginBottom="50sp"
             app:layout_constraintEnd_toEndOf="@id/cvvLabel"
@@ -177,6 +193,7 @@
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:layout_marginEnd="20sp"
             android:layout_marginBottom="50sp"
+            android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/nameOnCardLabel"
             app:layout_constraintTop_toBottomOf="@id/nameOnCardLabel"

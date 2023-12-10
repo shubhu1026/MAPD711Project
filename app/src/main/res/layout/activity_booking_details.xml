@@ -42,7 +42,7 @@
         app:layout_constraintWidth_percent="0.9"
         app:layout_constraintVertical_bias="0.4"
         app:cardCornerRadius="20sp"
-        app:cardElevation="40dp">
+        app:cardElevation="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                 android:id="@+id/btnCheckInDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select Checkin Date"
+                android:text="Select Check-in Date"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
                 android:textSize="16sp"
                 android:textAllCaps="false"
@@ -90,7 +90,7 @@
                 android:id="@+id/btnCheckOutDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select Checkout Date"
+                android:text="Select Check-out Date"
                 android:textSize="16sp"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
                 android:textAllCaps="false"

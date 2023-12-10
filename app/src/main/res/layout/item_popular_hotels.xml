@@ -60,7 +60,7 @@
             android:textSize="18sp"
             android:fontFamily="@font/plus_jakarta_sans_bold"
             android:textColor="#101010"
-            android:layout_marginRight="2sp"
+            android:layout_marginRight="5sp"
             app:layout_constraintBottom_toBottomOf="@id/hotelName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/hotelName"/>

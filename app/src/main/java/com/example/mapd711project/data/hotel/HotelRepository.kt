@@ -16,6 +16,14 @@ class HotelRepository(private val hotelDao: HotelDao, private val previewImageDa
         return hotelDao.getAllHotels()
     }
 
+    suspend fun getRecommendedHotels(): List<Hotel> {
+        return hotelDao.getRecommendedHotels()
+    }
+
+    suspend fun getPopularHotels(): List<Hotel> {
+        return hotelDao.getPopularHotels()
+    }
+
     suspend fun getHotelById(hotelId: Int): Hotel {
         return hotelDao.getHotelById(hotelId)
     }

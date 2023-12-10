@@ -14,13 +14,13 @@ import com.example.mapd711project.HotelDetailsActivity
 import com.example.mapd711project.R
 import com.example.mapd711project.data.hotel.Hotel
 
-class NearestHotelsAdapter(private var hotelList: List<Hotel>) : RecyclerView.Adapter<NearestHotelsAdapter.ViewHolder>() {
+class RecommendedHotelsAdapter(private var hotelList: List<Hotel>) : RecyclerView.Adapter<RecommendedHotelsAdapter.ViewHolder>() {
     fun updateHotelList(newHotelList: List<Hotel>) {
         hotelList = newHotelList
         notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_nearest_hotels, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recommended_hotels, parent, false)
         return ViewHolder(view)
     }
 

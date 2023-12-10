@@ -1,6 +1,8 @@
 package com.example.mapd711project
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -23,10 +25,14 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var customerViewModel: CustomerViewModel
 
+    private lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
 
         val customerRepository = CustomerRepository(AppDatabase.getDatabase(applicationContext).customerDao())
         val customerViewModelFactory = CustomerViewModelFactory(customerRepository)
@@ -38,6 +44,10 @@ class LoginActivity : AppCompatActivity() {
 
         binding.signUpButton.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
+        }
+
+        binding.backButton.setOnClickListener {
+            onBackPressed()
         }
     }
 
@@ -51,8 +61,9 @@ class LoginActivity : AppCompatActivity() {
                 // Email exists, proceed to validate credentials
                 val customer = customerViewModel.getCustomerByEmailAndPassword(email, password)
                 if (customer != null) {
-                    // Successful login, navigate to the next screen
+                    saveUserData(email)
                     startActivity(Intent(this@LoginActivity, SearchHotelsActivity::class.java))
+                    //startActivity(Intent(this@LoginActivity, MyBookingsActivity::class.java))
                 } else {
                     // Invalid credentials, show an error message
                     Toast.makeText(this@LoginActivity, "Invalid credentials", Toast.LENGTH_SHORT).show()
@@ -62,5 +73,12 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this@LoginActivity, "Email does not exist", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun saveUserData(email: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString("user_email", email)
+        editor.putBoolean("is_logged_in", true)
+        editor.apply()
     }
 }

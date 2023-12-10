@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
 
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:src="@drawable/back"
+        android:layout_marginTop="20sp"
+        android:padding="2sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/cardView"/>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
@@ -17,7 +27,7 @@
         app:layout_constraintWidth_percent="0.9"
         app:layout_constraintVertical_bias="0.4"
         app:cardCornerRadius="20sp"
-        app:cardElevation="40dp">
+        app:cardElevation="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -58,6 +68,7 @@
                 android:layout_marginEnd="20sp"
                 android:hint="Enter Email"
                 android:textColor="#878787"
+                android:inputType="textEmailAddress"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/emailLabel"
@@ -84,6 +95,7 @@
                 android:layout_marginBottom="50sp"
                 android:hint="Enter Password"
                 android:textColor="#878787"
+                android:inputType="textPassword"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/emailLabel"
@@ -107,8 +119,9 @@
                 android:layout_height="42sp"
                 android:layout_marginEnd="20sp"
                 android:layout_marginBottom="50sp"
-                android:hint="Enter Password Again"
+                android:hint="Confirm Password"
                 android:textColor="#878787"
+                android:inputType="textPassword"
                 android:fontFamily="@font/plus_jakarta_sans_medium"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

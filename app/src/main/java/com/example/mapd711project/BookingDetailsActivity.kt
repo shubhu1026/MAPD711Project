@@ -14,10 +14,15 @@ class BookingDetailsActivity : AppCompatActivity() {
     private var checkInDateSet = false
     private var checkInCalendar = Calendar.getInstance()
 
+    private var hotelId: Int = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookingDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val intent = intent
+        hotelId = intent.getIntExtra("hotelId", -1)
 
         binding.btnCheckInDate.setOnClickListener {
             showDatePicker(true)
@@ -39,7 +44,16 @@ class BookingDetailsActivity : AppCompatActivity() {
             } else if (!isRoomCountValid()) {
                 Toast.makeText(this, "Please enter a valid room count.", Toast.LENGTH_SHORT).show()
             } else {
-                startActivity(Intent(this, BookingSummaryActivity::class.java))
+                val checkInDate = binding.btnCheckInDate.text.toString().trim()
+                val checkOutDate = binding.btnCheckOutDate.text.toString().trim()
+                val roomCount = binding.roomsInput.text.toString().toIntOrNull()
+
+                val myIntent = Intent(this, BookingSummaryActivity::class.java)
+                myIntent.putExtra("hotelId", hotelId)
+                myIntent.putExtra("checkInDate", checkInDate)
+                myIntent.putExtra("checkOutDate", checkOutDate)
+                myIntent.putExtra("roomCount", roomCount)
+                startActivity(myIntent)
             }
         }
 

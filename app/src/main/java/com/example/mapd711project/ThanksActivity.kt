@@ -15,7 +15,7 @@ class ThanksActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.homeButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, MyBookingsActivity::class.java))
         }
     }
 }

@@ -12,10 +12,10 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.mapd711project.data.AppDatabase
 import com.example.mapd711project.data.hotel.Hotel
 import com.example.mapd711project.data.hotel.HotelRepository
+import com.example.mapd711project.data.hotel.HotelViewModel
 import com.example.mapd711project.data.hotel.HotelViewModelFactory
 import com.example.mapd711project.databinding.ActivityHotelDetailsBinding
 import com.example.mapd711project.rvAdapters.PreviewImagesAdapter
-import com.example.shubhampatelanmolsharma_mapd711_assignment4.data.pizza.HotelViewModel
 import kotlinx.coroutines.launch
 
 class HotelDetailsActivity : AppCompatActivity() {

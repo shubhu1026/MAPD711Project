@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textSize="25sp"
         android:text="Welcome Buddy"
-        android:textColor="#4694ea"
+        android:textColor="#4C4DDC"
         android:textStyle="bold"
         android:fontFamily="@font/plus_jakarta_sans_bold"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -24,7 +24,7 @@
         android:id="@+id/findHotelLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#69acec"
+        android:textColor="#4C4DDC"
         android:text="Find your dream Hotel"
         android:fontFamily="@font/plus_jakarta_sans_medium"
         app:layout_constraintTop_toBottomOf="@id/welcomeLabel"
@@ -77,22 +77,22 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/nearestLabel"
+        android:id="@+id/recommendedLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24sp"
-        android:text="Nearest"
+        android:text="Recommended"
         android:textColor="#101010"
         android:fontFamily="@font/plus_jakarta_sans_bold"
         app:layout_constraintTop_toBottomOf="@id/rvPopularHotel"
         app:layout_constraintStart_toStartOf="@id/findHotelLabel" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNearestHotel"
+        android:id="@+id/rv_recommended_hotel"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintVertical_weight="1"
-        app:layout_constraintTop_toBottomOf="@+id/nearestLabel"
+        app:layout_constraintTop_toBottomOf="@+id/recommendedLabel"
         app:layout_constraintWidth_percent="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 data class Hotel(
     @PrimaryKey(autoGenerate = true) val hotelId: Int = 0,
     val hotelName: String,
+    val category: String,
     val price: Double,
     val location: String,
     val address: String,

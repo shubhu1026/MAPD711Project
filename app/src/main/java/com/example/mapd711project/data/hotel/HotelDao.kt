@@ -16,6 +16,12 @@ interface HotelDao {
     @Query("SELECT * FROM hotels")
     suspend fun getAllHotels(): List<Hotel>
 
+    @Query("SELECT * FROM hotels where category='Popular'")
+    suspend fun getPopularHotels(): List<Hotel>
+
+    @Query("SELECT * FROM hotels where category='Recommended'")
+    suspend fun getRecommendedHotels(): List<Hotel>
+
     @Query("SELECT * FROM hotels WHERE hotelId = :hotelId")
     suspend fun getHotelById(hotelId: Int): Hotel
 }

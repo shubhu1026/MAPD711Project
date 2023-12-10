@@ -20,4 +20,8 @@ class CustomerViewModel(private val customerRepository: CustomerRepository): Vie
         return customerRepository.getCustomerByEmailAndPassword(email, password)
     }
 
+    suspend fun getCustomerByEmail(email: String): Customer? {
+        return customerRepository.getCustomerByEmailAndPassword(email)
+    }
+
 }
