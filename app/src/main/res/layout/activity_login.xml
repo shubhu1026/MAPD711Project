@@ -6,7 +6,7 @@
     android:id="@+id/my_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".LoginActivity"
     tools:ignore="HardcodedText">
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,6 +23,16 @@
         android:padding="2sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@id/cardView"/>
+
+    <ImageView
+        android:id="@+id/menuButton"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:src="@drawable/ic_menu"
+        android:padding="2sp"
+        app:layout_constraintTop_toTopOf="@id/backButton"
+        app:layout_constraintBottom_toBottomOf="@id/backButton"
+        app:layout_constraintEnd_toEndOf="@id/cardView"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -158,4 +168,14 @@
             android:textColor="#007bff"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/navigation_menu"
+        app:itemTextAppearance="@style/CustomNavigationTextStyle"/>
+
 </androidx.drawerlayout.widget.DrawerLayout>

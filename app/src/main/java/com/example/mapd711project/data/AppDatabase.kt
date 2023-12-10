@@ -59,8 +59,8 @@ abstract class AppDatabase: RoomDatabase() {
                     // Prepopulate Customers
                     val customerDao = database.customerDao()
                     val customers = listOf(
-                        Customer(0, "user1", "pass1"),
-                        Customer(0, "user2", "pass2")
+                        Customer(0, "user1", "pass1", "user 1", "1111111111"),
+                        Customer(0, "user2", "pass2", "user 2", "1111111111")
                     )
                     customerDao.insertCustomers(customers)
 

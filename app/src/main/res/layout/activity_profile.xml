@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity"
+    tools:ignore="HardcodedText">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".LoginActivity">
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:src="@drawable/back"
+            android:layout_marginTop="20sp"
+            android:padding="2sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/cardView"/>
+
+        <ImageView
+            android:id="@+id/menuButton"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:src="@drawable/ic_menu"
+            android:padding="2sp"
+            app:layout_constraintTop_toTopOf="@id/backButton"
+            app:layout_constraintBottom_toBottomOf="@id/backButton"
+            app:layout_constraintEnd_toEndOf="@id/cardView"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9"
+            app:layout_constraintVertical_bias="0.4"
+            app:cardCornerRadius="20sp"
+            app:cardElevation="20dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/profileTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50sp"
+                    android:fontFamily="@font/plus_jakarta_sans_bold"
+                    android:text="Profile"
+                    android:textColor="#101010"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/nameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20sp"
+                    android:layout_marginTop="50sp"
+                    android:fontFamily="@font/plus_jakarta_sans_bold"
+                    android:text="Name"
+                    android:textColor="#101010"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profileTitle" />
+
+                <EditText
+                    android:id="@+id/nameInput"
+                    android:layout_width="0dp"
+                    android:layout_height="43sp"
+                    android:layout_marginEnd="20sp"
+                    android:fontFamily="@font/plus_jakarta_sans_medium"
+                    android:hint="Enter Name"
+                    android:textColor="#878787"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/nameLabel"
+                    app:layout_constraintTop_toBottomOf="@id/nameLabel" />
+
+                <TextView
+                    android:id="@+id/emailLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20sp"
+                    android:fontFamily="@font/plus_jakarta_sans_bold"
+                    android:text="Email"
+                    android:textColor="#101010"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/nameLabel"
+                    app:layout_constraintTop_toBottomOf="@id/nameInput" />
+
+                <EditText
+                    android:id="@+id/emailInput"
+                    android:layout_width="0dp"
+                    android:layout_height="43sp"
+                    android:layout_marginEnd="20sp"
+                    android:fontFamily="@font/plus_jakarta_sans_medium"
+                    android:hint="Enter Email"
+                    android:textColor="#878787"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/emailLabel"
+                    app:layout_constraintTop_toBottomOf="@id/emailLabel" />
+
+                <TextView
+                    android:id="@+id/phoneLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20sp"
+                    android:fontFamily="@font/plus_jakarta_sans_bold"
+                    android:text="Contact No."
+                    android:textColor="#101010"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@id/nameLabel"
+                    app:layout_constraintTop_toBottomOf="@id/emailInput" />
+
+                <EditText
+                    android:id="@+id/phoneInput"
+                    android:layout_width="0dp"
+                    android:layout_height="43sp"
+                    android:layout_marginEnd="20sp"
+                    android:layout_marginBottom="50sp"
+                    android:fontFamily="@font/plus_jakarta_sans_medium"
+                    android:hint="Enter Contact No."
+                    android:textColor="#878787"
+                    android:inputType="phone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/phoneLabel"
+                    app:layout_constraintTop_toBottomOf="@id/phoneLabel" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/saveButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/rounded_button_background"
+            android:elevation="20sp"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/cardView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.9"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/navigation_menu"
+        app:itemTextAppearance="@style/CustomNavigationTextStyle"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

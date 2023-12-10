@@ -8,6 +8,8 @@ data class Customer(
     @PrimaryKey(autoGenerate = true)
     val customerId: Int = 0,
     val email: String,
-    val password: String
+    val password: String,
+    var name: String,
+    var phone: String
 )
 

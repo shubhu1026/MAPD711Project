@@ -6,6 +6,9 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.mapd711project.data.AppDatabase
@@ -18,6 +21,7 @@ import com.example.mapd711project.data.customer.CustomerRepository
 import com.example.mapd711project.data.customer.CustomerViewModel
 import com.example.mapd711project.data.customer.CustomerViewModelFactory
 import com.example.mapd711project.databinding.ActivityPaymentBinding
+import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.launch
 
 class PaymentActivity : AppCompatActivity() {
@@ -35,6 +39,8 @@ class PaymentActivity : AppCompatActivity() {
     private var totalCost: Double = 0.0
     private var bookedBy: String = ""
     private var phone: String = ""
+
+    private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +65,8 @@ class PaymentActivity : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
 
+        binding.totalText.text = "$$totalCost"
+
         binding.payButton.setOnClickListener {
             if (validateInputs()) {
                 if (isUserLoggedIn()) {
@@ -68,6 +76,22 @@ class PaymentActivity : AppCompatActivity() {
                     showToast("User is not logged in")
                 }
             }
+        }
+
+        drawerLayout = binding.myDrawerLayout
+        setupNavigationView()
+        setupDrawer()
+
+        binding.menuButton.setOnClickListener {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START)
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
+        }
+
+        binding.backButton.setOnClickListener {
+            onBackPressed()
         }
     }
 
@@ -134,5 +158,39 @@ class PaymentActivity : AppCompatActivity() {
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setupNavigationView() {
+        val navView: NavigationView = findViewById(R.id.nav_view)
+        val menu = navView.menu
+        navView.menu.clear()
+
+        // Add new custom menu items
+        menu.add("Home")
+        menu.add("Sign Up")
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.title) {
+                "Home" -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                "Sign Up" -> {
+                    startActivity(Intent(this, SignUpActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+    private fun setupDrawer() {
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            R.string.nav_open,
+            R.string.nav_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
     }
 }

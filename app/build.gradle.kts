@@ -80,5 +80,6 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
 
     // drawer manu
-    implementation ("com.google.android.material:material:1.12.0-alpha01")
+    implementation ("androidx.drawerlayout:drawerlayout:1.1.1")
+    implementation ("com.google.android.material:material:1.5.0")
 }

@@ -1,11 +1,17 @@
 package com.example.mapd711project
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.example.mapd711project.databinding.ActivityBookingDetailsBinding
+import com.google.android.material.navigation.NavigationView
 import java.util.Calendar
 
 class BookingDetailsActivity : AppCompatActivity() {
@@ -14,15 +20,23 @@ class BookingDetailsActivity : AppCompatActivity() {
     private var checkInDateSet = false
     private var checkInCalendar = Calendar.getInstance()
 
+    private lateinit var sharedPreferences: SharedPreferences
+
     private var hotelId: Int = -1
+    private var hotelName: String = "Hotel Details"
+
+    private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookingDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+
         val intent = intent
         hotelId = intent.getIntExtra("hotelId", -1)
+        hotelName = intent.getStringExtra("hotelName") ?: "Hotel Details"
 
         binding.btnCheckInDate.setOnClickListener {
             showDatePicker(true)
@@ -50,6 +64,7 @@ class BookingDetailsActivity : AppCompatActivity() {
 
                 val myIntent = Intent(this, BookingSummaryActivity::class.java)
                 myIntent.putExtra("hotelId", hotelId)
+                myIntent.putExtra("hotelName", hotelName)
                 myIntent.putExtra("checkInDate", checkInDate)
                 myIntent.putExtra("checkOutDate", checkOutDate)
                 myIntent.putExtra("roomCount", roomCount)
@@ -59,6 +74,18 @@ class BookingDetailsActivity : AppCompatActivity() {
 
         binding.backButton.setOnClickListener {
             onBackPressed()
+        }
+
+        drawerLayout = binding.myDrawerLayout
+        setupNavigationView()
+        setupDrawer()
+
+        binding.menuButton.setOnClickListener {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START)
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
         }
     }
     private fun isRoomCountValid(): Boolean {
@@ -99,5 +126,66 @@ class BookingDetailsActivity : AppCompatActivity() {
             datePickerDialog.datePicker.minDate = checkInCalendar.timeInMillis
             datePickerDialog.show()
         }
+    }
+
+    private fun setupNavigationView() {
+        val navView: NavigationView = findViewById(R.id.nav_view)
+        val menu = navView.menu
+        navView.menu.clear()
+
+        // Add new custom menu items
+        menu.add("Home")
+        menu.add("My Profile")
+        menu.add("Search Hotels")
+        menu.add(hotelName)
+        menu.add("Logout")
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.title) {
+                "Home" -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+                "My Profile" -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+                "Search Hotels" -> {
+                    startActivity(Intent(this, SearchHotelsActivity::class.java))
+                    true
+                }
+                hotelName -> {
+                    val intent = Intent(this@BookingDetailsActivity, HotelDetailsActivity::class.java)
+                    intent.putExtra("hotelId", hotelId)
+                    intent.putExtra("hotelName", hotelName)
+                    startActivity(intent)
+                    true
+                }
+                "Logout" -> {
+                    logoutUser()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun logoutUser() {
+        val editor = sharedPreferences.edit()
+        editor.putString("user_email", "")
+        editor.putBoolean("is_logged_in", true)
+        editor.apply()
+    }
+
+    private fun setupDrawer() {
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            R.string.nav_open,
+            R.string.nav_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
     }
 }

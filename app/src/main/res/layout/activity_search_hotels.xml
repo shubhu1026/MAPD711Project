@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchHotelsActivity"
+    tools:ignore="HardcodedText">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SearchHotelsActivity">
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="25sp"
+        android:layout_height="25sp"
+        android:src="@drawable/back"
+        android:layout_marginTop="20sp"
+        android:padding="2sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/welcomeLabel"/>
+
+    <ImageView
+        android:id="@+id/menuButton"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:src="@drawable/ic_menu"
+        android:padding="2sp"
+        app:layout_constraintTop_toTopOf="@id/backButton"
+        app:layout_constraintBottom_toBottomOf="@id/backButton"
+        app:layout_constraintEnd_toEndOf="@id/profileImage"/>
 
     <TextView
         android:id="@+id/welcomeLabel"
@@ -16,9 +45,9 @@
         android:textStyle="bold"
         android:fontFamily="@font/plus_jakarta_sans_bold"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/backButton"
         android:layout_marginLeft="20sp"
-        android:layout_marginTop="50sp"/>
+        android:layout_marginTop="30sp"/>
 
     <TextView
         android:id="@+id/findHotelLabel"
@@ -40,7 +69,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/welcomeLabel" />
 
-    <EditText
+    <!--
+        <EditText
         android:id="@+id/searchHotelEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -52,6 +82,7 @@
         app:layout_constraintStart_toStartOf="@id/findHotelLabel"
         app:layout_constraintStart_toEndOf="@id/profileImage"
         app:layout_constraintEnd_toEndOf="parent"/>
+        -->
 
     <TextView
         android:id="@+id/popularLabel"
@@ -63,7 +94,7 @@
         android:layout_marginTop="20sp"
         android:fontFamily="@font/plus_jakarta_sans_bold"
         app:layout_constraintWidth_percent="0.9"
-        app:layout_constraintTop_toBottomOf="@id/searchHotelEditText"
+        app:layout_constraintTop_toBottomOf="@id/findHotelLabel"
         app:layout_constraintStart_toStartOf="@id/findHotelLabel"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -99,3 +130,14 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<com.google.android.material.navigation.NavigationView
+android:id="@+id/nav_view"
+android:layout_width="wrap_content"
+android:layout_height="match_parent"
+android:layout_gravity="start"
+app:headerLayout="@layout/nav_header"
+app:menu="@menu/navigation_menu"
+app:itemTextAppearance="@style/CustomNavigationTextStyle"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

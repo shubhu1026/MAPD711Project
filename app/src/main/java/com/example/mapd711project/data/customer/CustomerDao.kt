@@ -20,8 +20,11 @@ interface CustomerDao {
     suspend fun getCustomerByEmailAndPassword(email: String, password: String): Customer?
 
     @Query("SELECT * FROM customers WHERE email = :email")
-    suspend fun getCustomerByEmailAndPassword(email: String): Customer?
+    suspend fun getCustomerByEmail(email: String): Customer?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCustomers(customers: List<Customer>)
+
+    @Update
+    suspend fun updateCustomer(customer: Customer)
 }

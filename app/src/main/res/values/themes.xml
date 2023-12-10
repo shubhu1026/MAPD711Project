@@ -25,4 +25,10 @@
         <!-- You can set other attributes here as needed -->
     </style>
 
+    <style name="CustomNavigationTextStyle" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans_bold</item>
+    </style>
+
 </resources>

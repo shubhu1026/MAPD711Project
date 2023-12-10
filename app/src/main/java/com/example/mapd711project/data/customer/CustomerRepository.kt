@@ -15,7 +15,11 @@ class CustomerRepository(private val customerDao: CustomerDao) {
         return customerDao.getCustomerByEmailAndPassword(email, password)
     }
 
-    suspend fun getCustomerByEmailAndPassword(email: String): Customer? {
-        return customerDao.getCustomerByEmailAndPassword(email)
+    suspend fun getCustomerByEmail(email: String): Customer? {
+        return customerDao.getCustomerByEmail(email)
+    }
+
+    suspend fun updateCustomer(customer: Customer) {
+        customerDao.updateCustomer(customer)
     }
 }

@@ -48,6 +48,7 @@ class PopularHotelsAdapter(private var hotelList: List<Hotel>) : RecyclerView.Ad
                 if (position != RecyclerView.NO_POSITION) {
                     val intent = Intent(itemView.context, HotelDetailsActivity::class.java)
                     intent.putExtra("hotelId", hotelList[position].hotelId)
+                    intent.putExtra("hotelName", hotelList[position].hotelName)
                     itemView.context.startActivity(intent)
                 }
             }
