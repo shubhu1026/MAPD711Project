@@ -77,6 +77,18 @@ class LoginActivity : AppCompatActivity() {
         val email = binding.emailInput.text.toString()
         val password = binding.passwordInput.text.toString()
 
+        if (email.isEmpty()) {
+            // Check if email is empty or not in a valid format
+            Toast.makeText(this@LoginActivity, "Email cannot be empty", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (password.isEmpty() ) {
+            // Check if password is empty or shorter than required length
+            Toast.makeText(this@LoginActivity, "Password cannot be empty", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         lifecycleScope.launch {
             val admin = adminViewModel.getAdminByEmailAndPassword(email, password)
             if (admin != null) {
