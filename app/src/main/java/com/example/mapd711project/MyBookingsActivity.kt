@@ -47,6 +47,8 @@ class MyBookingsActivity : AppCompatActivity(), MyBookingsAdapter.BookingItemCli
 
     private lateinit var drawerLayout: DrawerLayout
 
+    private var email: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyBookingsBinding.inflate(layoutInflater)
@@ -76,7 +78,7 @@ class MyBookingsActivity : AppCompatActivity(), MyBookingsAdapter.BookingItemCli
         })
 
         if(isUserLoggedIn()){
-            val email = getUserEmail()
+            email = getUserEmail()
             getUserIDFromDatabase(email)
         }
 
@@ -101,6 +103,8 @@ class MyBookingsActivity : AppCompatActivity(), MyBookingsAdapter.BookingItemCli
         lifecycleScope.launch {
             val updatedBooking = booking.copy(status = "pendingRequest")
             bookingViewModel.updateBooking(updatedBooking)
+            getUserIDFromDatabase(email)
+            Toast.makeText(this@MyBookingsActivity, "Cancellation Requested", Toast.LENGTH_SHORT).show()
         }
     }
 
