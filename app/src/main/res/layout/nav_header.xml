@@ -5,21 +5,23 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#101010">
+    android:background="#4C4DDC">
 
     <ImageView
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:src="@drawable/back"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:src="@drawable/hotel"
         android:layout_gravity="center"
         android:padding="8dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="John Doe"
+        android:text="Wander Stay"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
+        android:textSize="20sp"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:layout_gravity="center"
         android:layout_marginTop="8dp" />
 
 </LinearLayout>

@@ -12,6 +12,9 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.mapd711project.data.AppDatabase
+import com.example.mapd711project.data.admin.AdminRepository
+import com.example.mapd711project.data.admin.AdminViewModel
+import com.example.mapd711project.data.admin.AdminViewModelFactory
 import com.example.mapd711project.data.customer.CustomerRepository
 import com.example.mapd711project.data.customer.CustomerViewModel
 import com.example.mapd711project.data.customer.CustomerViewModelFactory
@@ -24,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     private lateinit var customerViewModel: CustomerViewModel
+    private lateinit var adminViewModel: AdminViewModel
 
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -39,6 +43,10 @@ class LoginActivity : AppCompatActivity() {
         val customerRepository = CustomerRepository(AppDatabase.getDatabase(applicationContext).customerDao())
         val customerViewModelFactory = CustomerViewModelFactory(customerRepository)
         customerViewModel = ViewModelProvider(this, customerViewModelFactory)[CustomerViewModel::class.java]
+
+        val adminRepository = AdminRepository(AppDatabase.getDatabase(applicationContext).adminDao())
+        val adminViewModelFactory = AdminViewModelFactory(adminRepository)
+        adminViewModel = ViewModelProvider(this, adminViewModelFactory)[AdminViewModel::class.java]
 
         binding.loginButton.setOnClickListener {
             loginUser()
@@ -70,23 +78,29 @@ class LoginActivity : AppCompatActivity() {
         val password = binding.passwordInput.text.toString()
 
         lifecycleScope.launch {
-            val emailExists = customerViewModel.doesEmailExist(email)
-            if (emailExists) {
+            val admin = adminViewModel.getAdminByEmailAndPassword(email, password)
+            if (admin != null) {
+                saveUserData(email)
+                startActivity(Intent(this@LoginActivity, AdminActivity::class.java))
+            }
+            else {
+                val emailExists = customerViewModel.doesEmailExist(email)
+                if (emailExists) {
                 // Email exists, proceed to validate credentials
-                val customer = customerViewModel.getCustomerByEmailAndPassword(email, password)
-                if (customer != null) {
-                    saveUserData(email)
-                    startActivity(Intent(this@LoginActivity, SearchHotelsActivity::class.java))
-                    //startActivity(Intent(this@LoginActivity, MyBookingsActivity::class.java))
-                } else {
-                    // Invalid credentials, show an error message
-                    Toast.makeText(this@LoginActivity, "Invalid credentials", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            } else {
+                    val customer = customerViewModel.getCustomerByEmailAndPassword(email, password)
+                    if (customer != null) {
+                        saveUserData(email)
+                        startActivity(Intent(this@LoginActivity, SearchHotelsActivity::class.java))
+                        //startActivity(Intent(this@LoginActivity, MyBookingsActivity::class.java))
+                    } else {
+                        // Invalid credentials, show an error message
+                        Toast.makeText(this@LoginActivity, "Invalid credentials", Toast.LENGTH_SHORT)
+                            .show()
+                    } } else {
                 // Email does not exist, show an error message or handle accordingly
                 Toast.makeText(this@LoginActivity, "Email does not exist", Toast.LENGTH_SHORT)
                     .show()
+                }
             }
         }
     }

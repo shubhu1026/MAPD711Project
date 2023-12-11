@@ -15,6 +15,14 @@ class BookingViewModel(private val bookingRepository: BookingRepository): ViewMo
     val bookingsLiveData: LiveData<List<Booking>>
         get() = _bookingsLiveData
 
+    private val _activeBookingsLiveData = MutableLiveData<List<Booking>>()
+    val activeBookingsLiveData: LiveData<List<Booking>>
+        get() = _activeBookingsLiveData
+
+    private val _bookingRequestsLiveData = MutableLiveData<List<Booking>>()
+    val bookingRequestsLiveData: LiveData<List<Booking>>
+        get() = _bookingRequestsLiveData
+
     suspend fun insertBooking(booking: Booking){
         bookingRepository.insertBooking(booking)
     }
@@ -26,5 +34,27 @@ class BookingViewModel(private val bookingRepository: BookingRepository): ViewMo
             _bookingsLiveData.postValue(bookings)
             Log.d("BookingViewModel", "Fetched bookings: $bookings")
         }
+    }
+
+    fun getActiveBookings() {
+        viewModelScope.launch {
+            val activeBookings = bookingRepository.getActiveBookings()
+            _activeBookingsLiveData.postValue(activeBookings)
+        }
+    }
+
+    fun getBookingRequests() {
+        viewModelScope.launch {
+            val bookingRequests = bookingRepository.getBookingRequests()
+            _bookingRequestsLiveData.postValue(bookingRequests)
+        }
+    }
+
+    suspend fun updateBooking(booking: Booking) {
+        bookingRepository.updateBooking(booking)
+    }
+
+    suspend fun deleteBooking(booking: Booking){
+        bookingRepository.deleteBooking(booking)
     }
 }

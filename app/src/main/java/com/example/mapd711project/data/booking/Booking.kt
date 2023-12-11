@@ -13,5 +13,6 @@ data class Booking(
     val checkInDate: String,
     val checkOutDate: String,
     val rooms: Int,
+    var status: String,
     val totalCost: Double,
 )

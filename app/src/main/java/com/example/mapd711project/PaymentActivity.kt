@@ -119,7 +119,7 @@ class PaymentActivity : AppCompatActivity() {
     }
 
     private fun saveBooking() {
-        val booking = Booking(0, customerId, bookedBy, phone, hotelId, checkInDate, checkOutDate, roomCount, totalCost)
+        val booking = Booking(0, customerId, bookedBy, phone, hotelId, checkInDate, checkOutDate, roomCount, "active", totalCost)
 
         lifecycleScope.launch {
             bookingViewModel.insertBooking(booking)

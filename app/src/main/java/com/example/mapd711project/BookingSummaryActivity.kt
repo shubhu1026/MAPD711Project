@@ -183,7 +183,8 @@ class BookingSummaryActivity : AppCompatActivity() {
 
         // Add new custom menu items
         menu.add("Home")
-        menu.add("Profile")
+        menu.add("My Profile")
+        menu.add("My Bookings")
         menu.add("Search Hotels")
         menu.add(hotelName)
         menu.add("Booking Details")
@@ -198,6 +199,11 @@ class BookingSummaryActivity : AppCompatActivity() {
 
                 "My Profile" -> {
                     startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+
+                "My Bookings" -> {
+                    startActivity(Intent(this, MyBookingsActivity::class.java))
                     true
                 }
 

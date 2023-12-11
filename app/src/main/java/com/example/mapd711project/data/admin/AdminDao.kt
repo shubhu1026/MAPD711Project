@@ -5,18 +5,12 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.example.mapd711project.data.customer.Customer
 
 @Dao
 interface AdminDao {
     @Insert
     suspend fun insertAdmin(admin: Admin)
-
-    //read users
-    @Query("SELECT * FROM admins")
-    fun getAllAdmins(): List<Admin>
-
-    @Query("SELECT * FROM admins WHERE userName = :username")
-    suspend fun getAdminByUsername(username: String): Admin?
 
     //update user
     @Update
@@ -26,7 +20,6 @@ interface AdminDao {
     @Delete
     suspend fun deleteAdmin(admin: Admin)
 
-    //deleteAll
-    @Query("DELETE FROM admins")
-    suspend fun deleteAllAdmins()
+    @Query("SELECT * FROM admins WHERE email = :email AND password = :password")
+    suspend fun getAdminByEmailAndPassword(email: String, password: String): Admin?
 }

@@ -12,39 +12,42 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.example.mapd711project.R
 import com.example.mapd711project.data.booking.Booking
+import com.example.mapd711project.data.booking.BookingViewModel
 import com.example.mapd711project.data.hotel.HotelViewModel
 
-class MyBookingsAdapter(
-    private var bookings: List<Booking>,
-    private val hotelViewModel: HotelViewModel,
-    private val itemClickListener: BookingItemClickListener
-) : RecyclerView.Adapter<MyBookingsAdapter.MyViewHolder>() {
+class AdminActiveBookingsAdapter(private var activeBookings: List<Booking>,
+                                 private val hotelViewModel: HotelViewModel,
+                                 private val deleteListener: BookingDeleteListener ) : RecyclerView.Adapter<AdminActiveBookingsAdapter.ViewHolder>() {
 
-    interface BookingItemClickListener {
-        fun onCancelClicked(booking: Booking)
+    interface BookingDeleteListener {
+        fun onDeleteClicked(booking: Booking)
     }
 
-    fun updateBookingsList(newBookings: List<Booking>) {
-        bookings = newBookings
+    fun updateActiveBookingsList(newActiveBookings: List<Booking>) {
+        activeBookings = newActiveBookings
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_hotel_booking, parent, false)
-        return MyViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        // Inflate your item layout and create ViewHolder
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_active_booking, parent, false)
+        return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(bookings[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val activeBooking = activeBookings[position]
+        holder.bind(activeBooking)
     }
 
     override fun getItemCount(): Int {
-        return bookings.size
+        return activeBookings.size
     }
 
-    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    // Inner ViewHolder class to hold your views
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val hotelNameTextView: TextView = itemView.findViewById(R.id.hotelName)
+        private val starCountTextView: TextView = itemView.findViewById(R.id.starCount)
         private val hotelAddressTextView: TextView = itemView.findViewById(R.id.hotelAddress)
         private val bookedByText: TextView = itemView.findViewById(R.id.bookedByText)
         private val contactNoText: TextView = itemView.findViewById(R.id.contactNoText)
@@ -52,12 +55,11 @@ class MyBookingsAdapter(
         private val checkOutText: TextView = itemView.findViewById(R.id.checkOutText)
         private val roomsText: TextView = itemView.findViewById(R.id.roomsText)
         private val totalText: TextView = itemView.findViewById(R.id.totalText)
-        private val starCountTextView: TextView = itemView.findViewById(R.id.starCount)
+        private val deleteButton: Button = itemView.findViewById(R.id.deleteButton)
         private val hotelImageView: ImageView = itemView.findViewById(R.id.hotelImage)
-        private val cancelButton: Button = itemView.findViewById(R.id.cancellationButton)
 
-        fun bind(booking: Booking) {
-            hotelViewModel.getHotelWithId(booking.hotelId)
+        fun bind(activeBooking: Booking) {
+            hotelViewModel.getHotelWithId(activeBooking.hotelId)
             hotelViewModel.hotelLiveData.observeForever { hotel ->
                 hotel?.let {
                     hotelNameTextView.text = it.hotelName
@@ -74,24 +76,19 @@ class MyBookingsAdapter(
                         .into(hotelImageView)// Use hotel image resource here
                 }
             }
+            bookedByText.text = activeBooking.bookedBy
+            contactNoText.text = activeBooking.phoneNumber
+            checkInText.text = activeBooking.checkInDate
+            checkOutText.text = activeBooking.checkOutDate
+            roomsText.text = activeBooking.rooms.toString()
+            totalText.text = "$${activeBooking.totalCost}"
 
-            bookedByText.text = booking.bookedBy
-            contactNoText.text = booking.phoneNumber
-            checkInText.text = booking.checkInDate
-            checkOutText.text = booking.checkOutDate
-            roomsText.text = booking.rooms.toString()
-            totalText.text = "$${booking.totalCost}"
-
-            if (booking.status == "pendingRequest") {
-                cancelButton.visibility = View.GONE
-            } else {
-                cancelButton.visibility = View.VISIBLE
-                cancelButton.setOnClickListener {
-                    val position = adapterPosition
-                    if (position != RecyclerView.NO_POSITION) {
-                        val clickedBooking = bookings[position]
-                        itemClickListener.onCancelClicked(clickedBooking)
-                    }
+            deleteButton.setOnClickListener {
+                // Handle accept button click
+                val currentPosition = adapterPosition
+                if (currentPosition != RecyclerView.NO_POSITION) {
+                    val bookingToDelete = activeBookings[currentPosition]
+                    deleteListener.onDeleteClicked(bookingToDelete)
                 }
             }
         }

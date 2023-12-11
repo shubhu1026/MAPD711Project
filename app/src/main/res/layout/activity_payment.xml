@@ -12,7 +12,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".PaymentActivity">
 
     <ImageView
@@ -52,9 +52,10 @@
     <ImageView
         android:id="@+id/creditCardImage"
         android:layout_width="0dp"
-        android:layout_height="220dp"
+        android:layout_height="200dp"
         android:src="@drawable/credit_card"
         android:layout_marginTop="20sp"
+        app:layout_constraintWidth_percent="0.9"
         app:layout_constraintTop_toBottomOf="@id/pageTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -80,7 +81,7 @@
             android:id="@+id/totalLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50sp"
+            android:layout_marginTop="30sp"
             android:text="Amount:"
             android:fontFamily="@font/plus_jakarta_sans_bold"
             android:textColor="#101010"
@@ -106,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20sp"
-            android:layout_marginTop="50sp"
+            android:layout_marginTop="30sp"
             android:text="Card Number"
             android:fontFamily="@font/plus_jakarta_sans_bold"
             android:textColor="#101010"
@@ -234,8 +235,10 @@
         android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/cardView"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth_percent="0.9"/>
+        app:layout_constraintWidth_percent="0.9"
+        app:layout_constraintVertical_bias="0"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

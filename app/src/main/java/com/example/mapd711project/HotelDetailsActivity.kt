@@ -84,7 +84,6 @@ class HotelDetailsActivity : AppCompatActivity() {
         hotelViewModel.getHotelWithId(hotelId)
         hotelViewModel.hotelLiveData.observe(this) { hotel ->
             binding.hotelName.text = hotel.hotelName
-            binding.hotelNameTitle.text = hotel.hotelName
             binding.hotelLocation.text = hotel.location
             binding.starCount.text = hotel.rating
             binding.hotelDescription.text = hotel.hotelDescription
@@ -121,6 +120,7 @@ class HotelDetailsActivity : AppCompatActivity() {
         menu.add("Home")
         menu.add("My Profile")
         menu.add("Search Hotels")
+        menu.add("My Bookings")
         menu.add("Logout")
 
         navView.setNavigationItemSelectedListener { menuItem ->
@@ -135,6 +135,10 @@ class HotelDetailsActivity : AppCompatActivity() {
                 }
                 "Search Hotels" -> {
                     startActivity(Intent(this, SearchHotelsActivity::class.java))
+                    true
+                }
+                "My Bookings" -> {
+                    startActivity(Intent(this, MyBookingsActivity::class.java))
                     true
                 }
                 "Logout" -> {

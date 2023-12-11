@@ -12,7 +12,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".BookingSummaryActivity">
 
@@ -329,8 +329,9 @@
         app:layout_constraintTop_toBottomOf="@id/yourInformationTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintWidth_percent="0.9"
-        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintVertical_bias="0.1"
         app:cardCornerRadius="20sp"
         app:cardElevation="20dp">
 

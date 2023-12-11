@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mapd711project.data.AppDatabase
+import com.example.mapd711project.data.booking.Booking
 import com.example.mapd711project.data.booking.BookingRepository
 import com.example.mapd711project.data.booking.BookingViewModel
 import com.example.mapd711project.data.booking.BookingViewModelFactory
@@ -31,10 +32,11 @@ import com.example.mapd711project.rvAdapters.MyBookingsAdapter
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.launch
 
-class MyBookingsActivity : AppCompatActivity() {
+class MyBookingsActivity : AppCompatActivity(), MyBookingsAdapter.BookingItemClickListener {
     private lateinit var binding: ActivityMyBookingsBinding
 
     private lateinit var sharedPreferences: SharedPreferences
+
     private lateinit var customerViewModel: CustomerViewModel
     private lateinit var bookingViewModel: BookingViewModel
     private lateinit var hotelViewModel: HotelViewModel
@@ -66,7 +68,7 @@ class MyBookingsActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
 
         binding.rvHotelBookings.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        bookingsAdapter = MyBookingsAdapter(emptyList(), hotelViewModel)
+        bookingsAdapter = MyBookingsAdapter(emptyList(), hotelViewModel, this)
         binding.rvHotelBookings.adapter = bookingsAdapter
 
         bookingViewModel.bookingsLiveData.observe(this, Observer { bookings ->
@@ -92,6 +94,13 @@ class MyBookingsActivity : AppCompatActivity() {
 
         binding.backButton.setOnClickListener {
             onBackPressed()
+        }
+    }
+
+    override fun onCancelClicked(booking: Booking) {
+        lifecycleScope.launch {
+            val updatedBooking = booking.copy(status = "pendingRequest")
+            bookingViewModel.updateBooking(updatedBooking)
         }
     }
 

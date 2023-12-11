@@ -206,8 +206,10 @@ abstract class AppDatabase: RoomDatabase() {
 
                     // Prepopulate Admin
                     val adminDao = database.adminDao()
-                    val admin = Admin(0, "admin", "pass", "Admin","1")
+                    val admin = Admin(0, "admin@gmail.com", "password", "Admin 1")
+                    val admin2 = Admin(0, "admin2@gmail.com", "password", "Admin 2")
                     adminDao.insertAdmin(admin)
+                    adminDao.insertAdmin(admin2)
                 }
             }
         }

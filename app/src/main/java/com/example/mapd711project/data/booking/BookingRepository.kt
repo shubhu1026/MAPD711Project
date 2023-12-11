@@ -12,4 +12,20 @@ class BookingRepository(private val bookingDao: BookingDao) {
         return bookingDao.getBookingsByCustomerId(customerId)
     }
 
+    suspend fun getActiveBookings(): List<Booking> {
+        return bookingDao.getActiveBookings()
+    }
+
+    suspend fun getBookingRequests(): List<Booking> {
+        return bookingDao.getBookingRequests()
+    }
+
+    suspend fun updateBooking(booking: Booking){
+        return bookingDao.updateBooking(booking)
+    }
+
+    suspend fun deleteBooking(booking: Booking) {
+        bookingDao.deleteBooking(booking)
+    }
+
 }
